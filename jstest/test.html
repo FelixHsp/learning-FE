@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*//第三章
+    //第一题
+    /!*var x =Math.random();
+    var y =Math.random();
+    x>=y ? console.log("x") :console.log("y");*!/
+    //第二题
+    /!*function getLeapYear(year) {
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            return true;
+        }
+        return false;
+    }
+    var today = new Date();
+    var year = today.getFullYear();
+    document.write('现在是' + year + '年' + (getLeapYear(year) ? '是闰年' : '不是闰年'));*!/
+    //第四章
+    //第一题
+   /!* var old = prompt('年龄');
+    if(old !=null && old<14){
+        alert('儿童')
+    }else if(old>=14&&old<24){
+        alert('青少年')
+    }else if(old>=24&&old<40){
+        alert('青年')
+    }else if(old>=40&&old<60){
+        alert('中年')
+    }else if(old>=60){
+        alert('老年')
+    }else {
+        alert('请重新输入正确的年龄')
+    }*!/
+    //第二题
+
+    //第三题 1.
+    /!*function factorial2(n) {
+        var sum=1;
+        for (var i=1;i<=n;i++){
+            sum=sum*i;
+        }
+        return sum
+    }
+    console.log(factorial2(10))*!/
+    //第三题2.
+    /!*function factorial(n) {
+        if (n==1){
+            return 1;
+        }
+        return n*factorial(n-1)
+    }
+    console.log(factorial(10))*!/
+    //第四题
+    /!*function factorial(n) {
+        if (n==1){
+            return 1;
+        }
+        return n*factorial(n-1)
+    }
+    var sum=0;
+    for (var i =1;i<=10;i++){
+
+    } *!/
+
+    //第五题1.
+    /!*num=[1,1+' '+2,1+' '+2+' '+3,1+' '+2+' '+3+' '+4,1+' '+2+' '+3+' '+4+' '+5];
+    for (var i=0;i<num.length;i++){
+        document.write(num[i]+'</br>');
+    }*!/
+    //第五题2.
+
+    //第六题
+    /!*for (num=5;num>=1;num--){
+        for (x=1;x<=num;x++){
+            document.write("&nbsp;");
+        }
+        for (y=5-num;y>=0;y--){
+            document.write("* ");
+        }
+        document.write("<br>");
+    }*!/
+    //第七题
+    /!*for (var i=100;i<1000;i++){
+        if ((i%4==2)&&(i%7==3)&&(i%9==5)){
+            document.write(i+'<br>');
+        }
+    }*!/
+    //第七题
+    /!*for (var i=1000;i<10000;i++){
+        if ((i%13==0)&&(Math.floor(i/100)%10+Math.floor(i/10)%10==(Math.floor(i/1000)))) {
+            document.write(i+'<br>');
+        }
+    }*!/
+    //第五章
+    //第一题
+    /!*var x=prompt('输入一个数');
+    var result;
+    function f(x) {
+        result=4*x*x+3*x+2;
+        return result
+    }
+    alert(f(x));*!/
+    //第二题
+    /!*var x=prompt('请输入一个数x');
+    var y=prompt('请输入一个数y');
+    function Min(x,y) {
+        if (x<y){
+            alert('最小值为x')
+        }else if(x>y){
+            alert('最小值为y')
+        }else {
+            alert('请重新输入')
+        }
+    }
+    Min(x,y);*!/
+    //第三题
+    /!*var count = 0;//计数器
+    var i;
+    function f(i) {
+        for (var i=1;i<=1000;i++){
+            if (i%3==0&&i%5==0&&i%7==0){
+                document.write(i+'&nbsp;');
+                count++;
+                if (count%6==0){
+                    document.write('<br>')
+                }
+            }
+        }
+    }
+    f()*!/
+    //第五题
+   /!* var result;
+    function factorical(n) {
+        if (n==1){
+            return 1
+        }
+        return n * arguments.callee(n - 1);
+    }
+    result=factorical(12)-factorical(10)
+    document.write(result)*!/
+    var x=prompt('多少层')
+    function print(n) {
+        for(var i=1;i <=n;i++){
+            for (var k=1;k<=n-i;k++){
+                document.write('&nbsp;')
+            }
+            for (var j=1;j<=i;j++){
+                document.write(i+'&nbsp;')
+            }document.write('<br>')
+        }
+    }
+    print(x)*/
+    //第七题 递归
+    /*   function too(n) {
+         if (n==1||n==2){
+             return 1;
+         }
+
+         return too(n-2)+too(n-1);
+     }
+     document.write(too(5))*/
+    //第八题
+    /*var x;
+    var sum=0;
+    function foo(n) {
+        for (var i=1;i<=n;i++){
+            x=Math.pow(-1,i-1)*(1/(2*i-1));
+            sum=sum+x;
+        }
+        return sum;
+    }
+    document.write(foo())*/
+    //第九题
+    /*var a;
+    var b;
+    var c;
+    var sum=0;
+    function foo(n) {
+        for (var i=1;i<=10000000;i++){
+            a=Math.floor ( Math.random ( ) * n + 1);
+            b=Math.floor ( Math.random ( ) * n + 1);
+            c=Math.floor ( Math.random ( ) * n + 1);
+            if (a==8||b==8||c==8){
+                sum=sum+1;
+            } else {
+                sum=sum;
+            }
+        }return sum/10000000;
+    }
+    document.write(foo(9))*/
+
+</script>
+</body>
+</html>
