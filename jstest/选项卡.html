@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+
+        }
+        #menu {
+            width: 500px;
+            height: 30px;
+            border: 1px solid#000000;
+            background-color:#cccccc;
+        }
+        #word{
+            width: 500px;
+            height: 450px;
+            border: 1px solid#000000;
+            background-color:#cccccc;
+            top: -1px;
+        }
+        #menu li {
+            float: left;
+            list-style: none;
+            height: 30px;
+            text-align: center;
+            width: 80px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        #menu #l1{
+            background-color: black;
+            color: aliceblue;
+        }
+        #menu #l2{
+            background-color: darkgrey;
+        }
+        #menu #l3{
+            background-color: darkgrey;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <ul>
+            <li id="l1">html</li>
+            <li id="l2">css</li>
+            <li id="l3">javascript</li>
+        </ul>
+    </div>
+    <div id="word">
+
+    </div>
+
+
+    <script>
+        var ol1=document.getElementById('l1');
+        var ol2=document.getElementById('l2');
+        var ol3=document.getElementById('l3');
+        ol1.onclick=function () {
+            ol1.style.backgroundColor='black';
+            ol1.style.color='aliceblue';
+            ol2.style.backgroundColor='darkgrey';
+            ol2.style.color='black';
+            ol3.style.backgroundColor='darkgrey';
+            ol3.style.color='black';
+        };
+        ol2.onclick=function () {
+            ol2.style.backgroundColor='black';
+            ol2.style.color='aliceblue';
+            ol1.style.backgroundColor='darkgrey';
+            ol1.style.color='black';
+            ol3.style.backgroundColor='darkgrey';
+            ol3.style.color='black';
+        };
+        ol3.onclick=function () {
+            ol3.style.backgroundColor='black';
+            ol3.style.color='aliceblue'
+            ol1.style.backgroundColor='darkgrey';
+            ol1.style.color='black';
+            ol2.style.backgroundColor='darkgrey';
+            ol2.style.color='black';
+        }
+    </script>
+</body>
+</html>
