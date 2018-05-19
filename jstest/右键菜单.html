@@ -13,12 +13,17 @@
         height: 30px;
         width: 120px;
         border-bottom: 1px dashed#ccc;
-
-
+        cursor: pointer;
+        line-height: 30px;
+        text-align: center;
     }
     #menu{
         width: 120px;
         border: 1px solid#000000;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: none;
     }
     #menu li:hover{
         background:#cccccc;
@@ -38,6 +43,21 @@
     </ul>
 
 
+    <script>
+        var omenu = document.getElementById('menu');
+        document.oncontextmenu = function (e) {
+            omenu.style.display='block';
+            e=e||window.event;
+            omenu.style.left=e.clientX+'px';
+            omenu.style.top=e.clientY+'px';
+            return false
+        };
+        document.onclick = function(){
+            omenu.style.display='none';
+        };
+        
 
+
+    </script>
 </body>
 </html>
