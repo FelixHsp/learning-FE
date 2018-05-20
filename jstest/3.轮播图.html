@@ -79,11 +79,10 @@
     </div>
     <div id="direction">
         <ul>
-            <li class="selected">&lt;</li>
-            <li>&gt;</li>
+            <li id="pre">&lt;</li>
+            <li id="nex">&gt;</li>
         </ul>
     </div>
-
 </div>
 
 <script>
@@ -91,19 +90,55 @@
     var ali1=oimm.getElementsByTagName('li');
     var osequence=document.getElementById('sequence');
     var ali2=osequence.getElementsByTagName('li');
+    var opre=document.getElementById('pre');
+    var onex=document.getElementById('nex');
+    var ocontainer=document.getElementById('container');
+    var iNowIndex =0;
+    var timer;
+
     for (var i=0;i<ali2.length;i++) {
         ali2[i].index = i;
         ali2[i].onmouseover = function () {
-            for (var i = 0; i < ali2.length; i++) {
-                ali1[i].className = '';
-                ali2[i].className = '';
-                ali1[this.index].className = 'selected';
-                this.className = 'selected';
-            }
+            change();
+            iNowIndex=this.index
         }
     }
-
-
+    opre.onclick = onex.onclick = function () {
+            if(this===opre){
+                iNowIndex--;
+                if (iNowIndex<=-1){
+                    iNowIndex=3
+                }
+            }else {
+                iNowIndex++;
+                if (iNowIndex>=4){
+                    iNowIndex=0
+                }
+            }
+        change()
+    };
+    timer=setInterval(function () {
+        onex.onclick()
+    },1500);
+    ocontainer.onmouseover=function () {
+        clearInterval(timer)
+    };
+    ocontainer.onmouseout=function () {
+        timer=setInterval(function () {
+            onex.onclick()
+        },1500);
+    };
+    opre.onselectstart = onex.onselectstart = function(){
+        return false;//阻止默认行为
+    };
+    function change() {
+        for (var i = 0; i < ali2.length; i++) {
+            ali1[i].className = '';
+            ali2[i].className = '';
+        }
+        ali1[iNowIndex].className='selected';
+        ali2[iNowIndex].className='selected';
+    }
 </script>
 </body>
 </html>
