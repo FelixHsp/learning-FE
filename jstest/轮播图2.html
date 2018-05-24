@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #img li{
+            display: none;
+        }
+        #container{
+            width: 520px;
+            height: 520px;
+            position: relative;
+            margin: 100px auto;
+        }
+        #img .selected{
+            display: block;
+        }
+        #sequence{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #direction{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        #sequence li , #direction li {
+            width: 20px;
+            height: 20px;
+            border: solid 1px;
+            float: left;
+            background: #000000;
+            color: #fff;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        #sequence .selected{
+            background: coral;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="img">
+        <ul>
+            <li class="selected"><img src="images/轮播图/5.JPG" width="520" height="520"></li>
+            <li><img src="images/轮播图/6.JPG" width="520" height="520"></li>
+            <li><img src="images/轮播图/7.JPG" width="520" height="520"></li>
+            <li><img src="images/轮播图/8.JPG" width="520" height="520"></li>
+        </ul>
+    </div>
+    <div id="sequence">
+        <ul>
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div id="direction">
+        <ul>
+            <li id="pre"><</li>
+            <li id="nex">></li>
+        </ul>
+    </div>
+</div>
+<script>
+    var oimg=document.getElementById('img');
+    var ali1=oimg.getElementsByTagName('li');
+    var osequence=document.getElementById('sequence');
+    var ali2=osequence.getElementsByTagName('li');
+    var opre=document.getElementById('pre');
+    var onex=document.getElementById('nex');
+    var ocontainer=document.getElementById('container');
+    var timer;
+    var iNowIndex=0;
+    for (var i=0;i<ali2.length;i++) {
+        ali2[i].index = i;
+        ali2[i].onmouseover = function () {
+            change();
+            iNowIndex=this.index
+        }
+    }
+    opre.onclick =onex.onclick=function () {
+        if (this==opre){
+            iNowIndex--;
+            if (iNowIndex<=-1){
+                iNowIndex=3
+            }
+        }else {
+            iNowIndex++;
+            if (iNowIndex>=4){
+                iNowIndex=0
+            }
+        }
+        change()
+    };
+    timer=setInterval(function () {
+        onex.onclick()
+    },1500);
+    ocontainer.onmouseover=function () {
+        clearInterval(timer)
+    };
+    ocontainer.onmouseout=function () {
+        timer=setInterval(function () {
+            onex.onclick()
+        },1500);
+    };
+    opre.onselectstart = onex.onselectstart = function(){
+        return false;
+    };
+    function change() {
+        for (var i = 0; i < ali2.length; i++) {
+            ali1[i].className = '';
+            ali2[i].className = '';
+        }
+        ali1[iNowIndex].className='selected';
+        ali2[iNowIndex].className='selected';
+    }
+</script>
+</body>
+</html>

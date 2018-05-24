@@ -104,7 +104,7 @@
         }
     }
     opre.onclick = onex.onclick = function () {
-            if(this===opre){
+            if(this==opre){
                 iNowIndex--;
                 if (iNowIndex<=-1){
                     iNowIndex=3
@@ -129,7 +129,7 @@
         },1500);
     };
     opre.onselectstart = onex.onselectstart = function(){
-        return false;//阻止默认行为
+        return false;
     };
     function change() {
         for (var i = 0; i < ali2.length; i++) {
