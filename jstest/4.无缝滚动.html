@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #container{
+            width: 320px;
+            height: 200px;
+            border: solid 1px black;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        #ul1 li{
+            width: 100px;
+            height: 100px;
+            background: black;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            float: left;
+            margin-right: 10px;
+        }
+        #ul1{
+            width: 440px;
+            position: relative;
+        }
+        #direction span{
+            background: #ccc;
+            padding: 10px;
+            display: block;
+            width: 40px;
+            float: left;
+        }
+        #direction{
+            position: absolute;
+            margin-left: -60px;
+            left: 50%;
+            bottom: 30px;
+        }
+        #left{
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="ul1">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="direction">
+            <span id="left">向左</span>
+            <span id="right">向右</span>
+        </div>
+    </div>
+    <script>
+        var oul=document.getElementById('ul1');
+        oul.innerHTML+=oul.innerHTML;
+        oul.style.width= oul.offsetWidth*2 + 'px';
+        var oleft=document.getElementById('left');
+        var oright=document.getElementById('right');
+        var speed=-5;
+        setInterval(function () {
+            oul.style.left=oul.offsetLeft+speed +'px';
+            if (oul.offsetLeft <= -oul.offsetWidth/2){
+                oul.style.left = 0+'px';
+            }
+            if (oul.offsetLeft>0) {
+                oul.style.left = -oul.offsetWidth/2+'px'
+            }
+        },50);
+        oleft.onmouseover=function () {
+            speed = -5;
+        };
+        oright.onmouseover=function () {
+            speed = 5 ;
+        }
+    </script>
+</body>
+</html>
