@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 400px;
+            height: 400px;
+            background: coral;
+        }
+        #div2{
+            width: 300px;
+            height: 300px;
+            background: darkseagreen;
+        }
+        #div3{
+            width: 200px;
+            height: 200px;
+            background: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id="div3">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var odiv1=document.getElementById('div1');
+        var odiv2=document.getElementById('div2');
+        var odiv3=document.getElementById('div3');
+        /*odiv1.onclick=function () {
+            console.log('div1')
+
+        };
+        odiv2.onclick=function () {
+            console.log('div2')
+        };
+        odiv3.onclick=function () {
+            console.log('div3')
+        };*/
+
+        //冒泡
+        /*odiv1.addEventListener('click',function (e) {
+            console.log('div1 冒泡');
+            e.stopPropagation()
+        },false);
+        odiv2.addEventListener('click',function (e) {
+            console.log('div2 冒泡');
+            e.stopPropagation()
+        },false);
+        odiv3.addEventListener('click',function (e) {
+            console.log('div3 冒泡');
+            e.stopPropagation()
+        },false);*/
+
+        //捕获
+        /*odiv1.addEventListener('click',function (e) {
+            console.log('div1 捕获');
+            e.stopPropagation()
+        },true);
+        odiv2.addEventListener('click',function (e) {
+            console.log('div2 捕获');
+            e.stopPropagation()
+        },true);
+        odiv3.addEventListener('click',function (e) {
+            console.log('div3 捕获');
+            e.stopPropagation()
+        },true);*/
+
+
+
+
+    </script>
+</body>
+</html>
