@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body,html{
+            height: 100%;
+        }
+        #container{
+            height: 100%;
+            background-image: url("img/bg.jpg");
+            position: relative;
+        }
+        .img-box{
+            width: 125px;
+            height: 125px;
+            border: 5px solid white;
+            position: absolute;
+            left: -135px;
+            top: -135px;
+            -webkit-transition: all 2s ease;
+        }
+        .img-box span{
+            width: 125px;
+            height: 125px;
+            background: red;
+            display: block;
+            opacity: 0;
+        }
+        #prev,#next{
+            width: 40px;
+            height: 80px;
+
+            position: absolute;
+            top: 50%;
+            transform: translate(0,-50%);
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+            display: none;
+        }
+        #prev{
+            left: 0;
+            background:white url("img/prev.png") no-repeat center center;
+        }
+        #next{
+            right: 0;
+            background:white url("img/next.png") no-repeat center center;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+</div>
+<div id="prev"></div>
+<div id="next"></div>
+<script>
+    var count=0;
+    var oContainer=document.getElementById('container');
+    for (var i=0;i<24;i++){
+        var oImg=new Image();
+        oImg.onload = function () {
+            count++;
+            if (count==24){
+                loadSuccess()
+            }
+        };
+        oImg.src='img/'+(i+1)+'.jpg';
+    }
+    for (var j=0;j<24;j++){
+        var oImg=new Image();
+        oImg.onload = function () {
+            count++;
+            if (count==24){
+                loadSuccess()
+            }
+        };
+        oImg.src='img/thumbs/'+(j+1)+'.jpg';
+    }
+
+
+
+
+
+    var index=0;
+    var iNow=0;
+    function loadSuccess() {
+        for (var i=0;i<4;i++){
+            for (var j=0;j<6;j++){
+                var oDiv=document.createElement('div');
+                oDiv.className='img-box';
+                oDiv.pos={
+                    row:i ,
+                    col:j
+                };
+                oDiv.innerHTML='<span></span>';
+                oDiv.idx=index;
+                index++;
+                oDiv.style.background='url(img/thumbs/'+index+'.jpg)';
+                oDiv.onclick=fn;
+                oContainer.appendChild(oDiv)
+            }
+        }
+        var spaceY=(oContainer.offsetHeight-135*4)/5;
+        var spaceX=(oContainer.offsetWidth-135*6)/7;
+        var aImg=oContainer.getElementsByTagName('div');
+        for (var k=0;k<24;k++){
+            aImg[k].style.left=(aImg[k].pos.col+1)*spaceX+aImg[k].pos.col*135+'px';
+            aImg[k].style.top=(aImg[k].pos.row+1)*spaceY+aImg[k].pos.row*135+'px';
+            aImg[k].style.transitionDelay = (24-k)*100+'ms';
+            aImg[k].style.transform = 'rotate('+(Math.random()*40-20) +'deg)'
+        }
+        var iTop=(oContainer.offsetHeight-127*4)/2;
+        var iLeft=(oContainer.offsetWidth-127*6)/2;
+        var flag=true;
+        var oPrev=document.getElementById('prev');
+        var oNext=document.getElementById('next');
+        function fn() {
+            if (flag){
+                for (var i=0;i<24;i++){
+                    var oImg=aImg[i];
+                    oImg.style.transitionDelay='0ms';
+                    oImg.style.border='solid 1px white';
+                    oImg.style.left=oImg.pos.col*127+iLeft+'px';
+                    oImg.style.top=oImg.pos.row*127+iTop+'px';
+                    oImg.style.transform='rotate(0deg)';
+                    var oSpan = oImg.getElementsByTagName('span')[0];
+                    oSpan.style.opacity = 1;
+                    var x = oImg.pos.col * -125;
+                    var y = oImg.pos.row *-125;
+                    oSpan.style.background='url(img/'+(this.idx+1)+'.jpg)'+x+'px '+y+'px';
+                    oPrev.style.display='block';
+                    oNext.style.display='block';
+                    aSpan[i].style.transitionDelay= '0ms';
+                    iNow=this.idx;
+                }
+            }else{
+                for (var i=0;i<24;i++ ){
+                    var oImg=aImg[i];
+                    oImg.style.left=(oImg.pos.col+1)*spaceX+oImg.pos.col*135+'px';
+                    oImg.style.top=(oImg.pos.row+1)*spaceY+oImg.pos.row*135+'px';
+                    oImg.style.transform='rotate('+(Math.random()*40-20)+'deg)';
+                    oImg.style.border='5px solid white';
+                    var oSpan=oImg.getElementsByTagName('span')[0];
+                    oSpan.style.opacity=0;
+                    oPrev.style.display='none';
+                    oNext.style.display='none';
+                    aSpan[i].style.transitionDelay= '0ms';
+                }
+            }
+            flag = !flag;
+        }
+        var aSpan=oContainer.getElementsByTagName('span');
+        oNext.onclick=function () {
+            iNow++;
+            if (iNow==aSpan.length){
+                iNow=0
+            }
+            for (var i=0;i<aSpan.length;i++){
+                aSpan[i].style.transitionDelay= Math.random()*500+'ms';
+                aSpan[i].style.backgroundImage = 'url(img/'+(iNow+1)+'.jpg)';
+            }
+        };
+        oPrev.onclick=function () {
+            iNow--;
+            if (iNow==-1){
+                iNow=aSpan.length-1
+            }
+            for (var i=0;i<aSpan.length;i++){
+                aSpan[i].style.transitionDelay= Math.random()*500+'ms';
+                aSpan[i].style.backgroundImage = 'url(img/'+(iNow+1)+'.jpg)';
+            }
+        }
+
+
+
+
+
+
+    }
+
+
+</script>
+</body>
+</html>

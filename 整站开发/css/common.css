@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ul{
+    list-style: none;
+}
+.wrapper{
+    width: 1002px;
+    height: 120px;
+    /*background: red;*/
+    margin: 0 auto;
+}
+.logo{
+    float: left;
+    margin-top: 25px;
+}
+.nav{
+    float: left;
+    font-size:15px ;
+    color: #626262;
+    margin-left: 113px;
+    margin-top: 55px;
+
+
+}
+.nav li{
+    float: left;
+    padding: 0 25px 0 25px;
+    position: relative;
+}
+.nav li::after{
+    content: '';
+    background: #6b6b6b;
+    width: 1px;
+    height: 14px;
+    position: absolute;
+    right: 0;
+    top:50%;
+    margin-top:-7px;
+
+}
