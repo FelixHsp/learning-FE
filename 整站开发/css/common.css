@@ -57,10 +57,10 @@ ul{
     /*background: red;*/
     width: 10px;
     height: 12px;
-    float: right;
-    position: relative;
+    position: absolute;
     top: 9px;
     overflow: hidden;
+    left: 110px;
 }
 .search-img img{
     position: relative;
