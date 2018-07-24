@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    user-select: none;
 }
 li{
     list-style: none;
@@ -8,4 +9,6 @@ li{
 ul{
     list-style: none;
 }
-
+img{
+    pointer-events: none/*阻止图片拖拽*/
+}
