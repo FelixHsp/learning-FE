@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            border: 0;
+            margin: 0;
+        }
+        body{
+            background: darkorange;
+        }
+        .wrapper{
+            position: relative;
+            width: 400px;
+            height: 300px;
+            margin: 250px auto;
+        }
+        .heartleft{
+            width: 200px;
+            height: 200px;
+            /*background: red;*/
+            border-radius: 50%;
+        }
+        .heartright{
+            width: 200px;
+            height: 200px;
+            left: 140px;
+            /*background: red;*/
+            border-radius: 50%;
+        }
+        .heartbottom{
+            z-index: -1;
+            left: 70px;
+            top: 70px;
+            width: 200px;
+            height: 200px;
+            /*background: red;*/
+            transform: rotate(45deg);
+        }
+        .wrapper div{
+            background: red;
+            position: absolute;
+            box-shadow: 0 0 40px red;
+            animation: run .8s ease infinite normal;
+        }
+        @keyframes run {
+            0%{
+                transform: scale(1) rotate(225deg);
+                box-shadow: 0 0 40px red;
+            }
+            50%{
+                transform: scale(1.1) rotate(225deg);
+                box-shadow: 0 0 70px red;
+            }
+            100%{
+                transform: scale(1) rotate(225deg);
+                box-shadow: 0 0 40px red;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="heartleft"></div>
+        <div class="heartright"></div>
+        <div class="heartbottom"></div>
+    </div>
+</body>
+</html>
