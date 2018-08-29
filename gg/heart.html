@@ -9,25 +9,24 @@
             margin: 0;
         }
         body{
-            background: darkorange;
+            background: #06c1ae;
         }
         .wrapper{
             position: relative;
-            width: 400px;
+            width: 340px;
             height: 300px;
+            /*background: red;*/
             margin: 250px auto;
         }
         .heartleft{
             width: 200px;
             height: 200px;
-            /*background: red;*/
             border-radius: 50%;
         }
         .heartright{
             width: 200px;
             height: 200px;
             left: 140px;
-            /*background: red;*/
             border-radius: 50%;
         }
         .heartbottom{
@@ -36,27 +35,26 @@
             top: 70px;
             width: 200px;
             height: 200px;
-            /*background: red;*/
             transform: rotate(45deg);
         }
         .wrapper div{
-            background: red;
+            background: pink;
             position: absolute;
-            box-shadow: 0 0 40px red;
+            box-shadow: 0 0 40px pink;
             animation: run .8s ease infinite normal;
         }
         @keyframes run {
             0%{
                 transform: scale(1) rotate(225deg);
-                box-shadow: 0 0 40px red;
+                box-shadow: 0 0 40px pink;
             }
             50%{
                 transform: scale(1.1) rotate(225deg);
-                box-shadow: 0 0 70px red;
+                box-shadow: 0 0 70px pink;
             }
             100%{
                 transform: scale(1) rotate(225deg);
-                box-shadow: 0 0 40px red;
+                box-shadow: 0 0 40px pink;
             }
         }
     </style>
