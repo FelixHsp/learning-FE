@@ -23,7 +23,7 @@
         reverse() 取逆序
         */
 
-        //数组去重1
+        //数组去重
         function unique(arr) {
         const container = {};
         const newArr = [];
@@ -35,24 +35,24 @@
         }
         return newArr;
         }
-        console.log(unique('rassa'))
-        //数组去重2
-        function unique2(arr){
+        console.log(unique([1,1,2,2,3]))
+        //字符串去重
+        function unique2(str){
             var i,j;
-            var newArr='';
+            var newStr='';
             var flag=1;
-            for(i = 0;i < arr.length;i++){
-                for(j = 0;j < newArr.length;j++){
-                    if(newArr[j]==arr[i]){
+            for(i = 0;i < str.length;i++){
+                for(j = 0;j < newStr.length;j++){
+                    if(newStr[j] == str[i]){
                         flag=0;
                         break;
                     }
                 }
                 if(flag){
-                newArr = newArr+ arr[i];
+                newStr = newStr+ str[i];
                 }
             }
-            return newArr
+            return newStr
         }
         console.log(unique2('rassaa'))
     </script>
