@@ -14,7 +14,7 @@
         function reserve(str) {
             return str === str.split('').reverse().join('');
         }
-        console.log(reserve(str))
+        // console.log(reserve(str))
         /* 
         常用字符串方法
         toLowerCase 字符串转小写 
@@ -23,7 +23,7 @@
         reverse() 取逆序
         */
 
-        //数组去重
+        //数组去重1
         function unique(arr) {
         const container = {};
         const newArr = [];
@@ -35,7 +35,16 @@
         }
         return newArr;
         }
-        console.log(unique([1,1,2,2,3]))
+        // console.log(unique([1,1,2,2,3]))
+
+        //数组去重2
+        function unique1(arr){
+            return Array.from(new Set(arr))
+        }
+        var arr=[1,1,undefined,true,undefined,true,{},{}]
+        console.log(unique1(arr))//无法去掉{}
+
+
         //字符串去重
         function unique2(str){
             var i,j;
@@ -54,7 +63,7 @@
             }
             return newStr
         }
-        console.log(unique2('rassaa'))
+        // console.log(unique2('rassaa'))
     </script>
 </body>
 </html>
