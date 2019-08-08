@@ -25,6 +25,15 @@
             var a = 5;
         }
         foo()
+
+        function user2 () {
+            var name = 'Felix'
+            return function getName () {
+                return name
+                }
+            }
+            var userName = user2()()
+            console.log(userName)
     </script>
 </body>
 </html>
