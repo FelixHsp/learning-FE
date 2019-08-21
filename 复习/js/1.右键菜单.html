@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #menu{
+            width: 120px;
+            /* height: 500px; */
+            border: 1px solid black;
+            position:absolute;
+            text-align: center;
+            display: none;
+        }
+        #menu li{
+            border-top: 1px dashed black;
+            cursor: pointer;
+        }
+        #menu li:nth-child(1){
+            border-top: 0;
+        }
+        #menu li:hover{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>菜单一</li>
+        <li>菜单二</li>
+        <li>菜单三</li>
+        <li>菜单四</li>
+    </ul>
+
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aLi = oMenu.getElementsByTagName('li');
+        document.oncontextmenu = function (e) {
+            oMenu.style.display = 'block';
+            oMenu.style.left = e.clientX + 'px';
+            oMenu.style.top = e.clientY + 'px';
+            
+            return false; //阻止右键默认行为
+        }
+        document.onclick = function (e) {
+            oMenu.style.display = 'none';
+        }
+
+        for(var i = 0; i < aLi.length; i++){
+            aLi[i].onclick = function () {
+                alert(this.innerHTML)
+            }
+        }
+    </script>
+</body>
+</html>
