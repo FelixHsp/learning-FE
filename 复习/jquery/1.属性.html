@@ -8,19 +8,20 @@
 </head>
 <body>
     <div title="first">
-
     </div>
     <div title="second">
-
     </div>
 
+    <input type="text" value="bbbb">
     <script src="./jquery-1.12.4.js"></script>
     <script>
         var title2 = $('div').attr('title','setting') //两个参为设置
         var title = $('div').attr('title')//一个参为获取
         console.log(title,title2)
-
         //attr设置属性 prop设置特性
+
+        // var input = $('input').val('aaaaa')//设置val
+        console.log( $('input').val() )//获取val
     </script>
 </body>
 </html>
