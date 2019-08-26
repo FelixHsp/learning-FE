@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 400px;
+            height: 300px;
+            border: 1px solid black;
+            margin: 200px auto;
+        }
+        #wrapper{
+            border-bottom: 1px solid black;
+            height: 40px;
+            line-height: 40px;
+        }
+        #wrapper span{
+            background: #ccc;
+            display: block;
+            float: left;
+            margin-right: 30px;
+            width: 100px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #wrapper .selected{
+            color: white;
+            background-color: black;
+        }
+        #content div{
+            display: none;
+        }
+        #content .selected{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <span class="selected">选项卡1</span>
+            <span>选项卡2</span>
+            <span>选项卡3</span>
+        </div>
+        <div id="content">
+            <div class="selected">选项卡1</div>
+            <div>选项卡2</div>
+            <div>选项卡3</div>
+        </div>
+    </div>
+
+    <script>
+        var oContainer = document.getElementById('wrapper');
+        var aSpan = oContainer.getElementsByTagName('span');
+        var oContent = document.getElementById('content');
+        var aDiv = oContent.getElementsByTagName('div');
+
+        for(var i = 0;i<aSpan.length;i++){
+            aSpan[i].index = i;
+            aSpan[i].onclick = function () {
+                console.log(this.index);
+                for(var i = 0;i<aSpan.length;i++){
+                    aSpan[i].className = '';
+                    aDiv[i].classList = '';
+                }
+                this.className = 'selected';
+                aDiv[this.index].className = 'selected';
+            }
+        }
+    </script>
+</body>
+</html>
