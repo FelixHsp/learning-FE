@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function A() {};
+        function B(a) {
+            this.a = a;
+        };
+        function C(a) {
+            if(a){
+                this.a = a;
+            }
+        };
+        A.prototype.a = 1;
+        B.prototype.a = 1;
+        C.prototype.a = 1;
+        console.log(new A()); //_proto_: a: = 1 ; no a
+        /* 
+        var foo =  new A()
+        console.log(foo.a) 
+        foo._proto_===A.prototype
+        */
+        console.log(new B());//undefined
+        console.log(new C());//_proto_: a: = 1 ; no a
+        console.log(new C(2));//_proto_: a: = 1 ; a = 2
+        
+    </script>
+</body>
+</html>
