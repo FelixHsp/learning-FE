@@ -8,5 +8,15 @@
 </head>
 <body>
     
+    <script src="./kPromise.js"></script>
+    <script>
+        let p1 = new kPromise( ( resolve, reject ) => {
+            setTimeout( () => {
+                console.log('kPromise')
+                resolve();
+                // reject();
+            },1000)
+        });
+    </script>
 </body>
 </html>

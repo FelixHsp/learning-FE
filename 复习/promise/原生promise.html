@@ -9,13 +9,15 @@
 <body>
     
     <script>
-        new Promise( ( resove,reject ) => {
-            setTimeout( _=>{
+        // new Promise()
+        let p1 = new Promise( ( resolve,reject ) => {
+            setTimeout( () => {
                 console.log('Promise');
-                resove('Felix');
+                resolve('Felix');
             },1000);
-        }).then(val => {
-            console.log('val',val);
+        });
+        p1.then(res => {
+            console.log('res',res);
         });
     </script>
 </body>
