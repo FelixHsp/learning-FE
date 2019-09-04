@@ -11,24 +11,26 @@ class kPromise {
     }
     _resolve() {
         // console.log('resolve')
-        setTimeout( () => {
+        window.addEventListener( 'message' , () => {
             if(this.status !== kPromise.PENDING ) return;//防止状态二次改变
             this.status = kPromise.RESOLVED; //正常resolve直接调用，this指向window，需在handler里bind一下
             let handler;
             while ( handler = this.resolvedList.shift() ) {
                 handler();
             }
-        } , 0)
+        })
+        window.postMessage('');
     }
     _reject() {
-        setTimeout( () => {
+        window.addEventListener( 'message' , () => {
             if(this.status !== kPromise.PENDING ) return;
             this.status = kPromise.REJECTED;
             let handler;
             while ( handler = this.rejectedList.shift() ) {
                 handler();
             }
-        } , 0)
+        })
+        window.postMessage('');
     }
     then( resolvedHandler , rejectedHandeler ){
         // resolvedHandler();
