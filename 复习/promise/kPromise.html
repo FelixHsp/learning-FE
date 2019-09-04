@@ -17,6 +17,25 @@
                 // reject();
             },1000)
         });
+        p1.then( val => {
+            console.log( 'val' , val );
+        },err => {
+            console.log( 'err' , err );
+        });
+        p1.then( val => {
+            console.log( 'val2' , val );
+        },err => {
+            console.log( 'err2' , err );
+        })
+
+        /* setTimeout(()=>{
+            console.log('setTimeout'); // first
+        },0)
+        new kPromise ( (resolve) => {
+            resolve();   
+        }).then( () => {
+            console.log('then') // second
+        }) */ //如果在js里手动修改为异步会产生问题
     </script>
 </body>
 </html>
