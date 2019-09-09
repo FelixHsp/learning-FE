@@ -39,25 +39,35 @@ class kPromise {
         // resolvedHandler();
         return new kPromise ( (resolve , rejecte) => {
             function newResolveHandler(val) {
-                let result = resolvedHandler(val)
-                if(result instanceof kPromise){
-                    result.then(resolve , rejecte)
-                }else{
-                    resolve(result);
+                if( typeof resolvedHandler === 'function'){
+                    let result = resolvedHandler(val)
+                    if(result instanceof kPromise){
+                        result.then(resolve , rejecte)
+                    }else{
+                        resolve(result);
+                    }
+                } else {
+                    resolve(val);
                 }
             }
             function newRejectHandler(val) {
-                let result = rejectedHandeler(val)
-                if(result instanceof kPromise){
-                    result.then(resolve , rejecte)
-                }else{
-                    rejecte(result);
+                if(typeof rejectedHandeler === 'function'){
+                    let result = rejectedHandeler(val)
+                    if(result instanceof kPromise){
+                        result.then(resolve , rejecte)
+                    }else{
+                        rejecte(result);
+                    }
+                } else {
+                    rejectedHandeler(val)
                 }
             }
             this.resolvedList.push(newResolveHandler);
             this.rejectedList.push(newRejectHandler);
-        })
-        
+        })   
+    }
+    catch( rejectedHandeler ){
+        return this.then(undefined , rejectedHandeler)
     }
 }
 
