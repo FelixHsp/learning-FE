@@ -27,19 +27,35 @@ class kPromise {
         window.addEventListener( 'message' , () => {
             if(this.status !== kPromise.PENDING ) return;
             this.status = kPromise.REJECTED;
+            this.value = val;
             let handler;
             while ( handler = this.rejectedList.shift() ) {
-                handler();
+                handler(this.value);
             }
         })
         window.postMessage('');
     }
     then( resolvedHandler , rejectedHandeler ){
         // resolvedHandler();
-        this.resolvedList.push(resolvedHandler);
-        this.rejectedList.push(rejectedHandeler);
         return new kPromise ( (resolve , rejecte) => {
-            resolve();
+            function newResolveHandler(val) {
+                let result = resolvedHandler(val)
+                if(result instanceof kPromise){
+                    result.then(resolve , rejecte)
+                }else{
+                    resolve(result);
+                }
+            }
+            function newRejectHandler(val) {
+                let result = rejectedHandeler(val)
+                if(result instanceof kPromise){
+                    result.then(resolve , rejecte)
+                }else{
+                    rejecte(result);
+                }
+            }
+            this.resolvedList.push(newResolveHandler);
+            this.rejectedList.push(newRejectHandler);
         })
         
     }
@@ -48,3 +64,4 @@ class kPromise {
 // 1.传空参数进行报错。
 // 2.传正确的函数，调用它。
 // 3.修改promise状态。
+// 4.完成任务链
