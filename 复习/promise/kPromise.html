@@ -33,13 +33,16 @@
             return new kPromise( (resolve,reject) =>{
                 setTimeout(() => {
                     console.log('kPromise2')
-                    resolve('GG')
+                    resolve('Felix2')
                 }, 1000);
             } )
         });
         p2.then ( val => {
             console.log('test2' , val)
-        })
+            return('Felix3')
+        }).then( val=>{
+            console.log('test3' , val)
+        } )
         /* setTimeout(()=>{
             console.log('setTimeout'); // first
         },0)
