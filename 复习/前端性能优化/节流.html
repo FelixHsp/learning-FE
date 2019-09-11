@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #container{
+            width: 100%;
+            height: 2000px;
+            background: black
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+
+    </div>
+
+    <script>
+        const throwttle = (func , wait=1000)=>{
+            let lastTime = 0
+            return ( ...args )=>{
+                let now = new Date().getTime()
+                if(now - lastTime > wait){
+                    func.apply(this , args)
+                    lastTime = now
+                }
+            }
+        }
+        let i = 1
+        window.addEventListener('scroll',throwttle( ()=>{
+            console.log(i)
+            i+=1
+        }))
+    </script>
+</body>
+</html>
