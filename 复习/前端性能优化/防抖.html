@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp">
+    <p id="p"></p>
+    <script>
+        var  oInput = document.getElementById('inp')
+        var oP = document.getElementById('p')
+        const debounce = (func,wait=500)=>{
+            let timer = 0;
+            return( ...args )=>{
+                if(timer){
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(()=>{
+                    func.apply(this,args)
+                },wait)
+            }
+        }
+        oInput.addEventListener('input',debounce(()=>{
+            oP.innerHTML = oInput.value
+        }))
+    </script>
+</body>
+</html>
