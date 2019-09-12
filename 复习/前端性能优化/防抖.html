@@ -19,7 +19,7 @@
                     clearTimeout(timer)
                 }
                 timer = setTimeout(()=>{
-                    func.apply(this,args)
+                    func.call(this,args) //func.apply(this.args)
                 },wait)
             }
         }
