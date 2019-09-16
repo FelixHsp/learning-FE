@@ -1,5 +1,5 @@
 let arr = [10,11,12,13,9,8,7];
-
+//复杂度 (On=log2N) 空间占用多，额外占用left，right两个数组
 function quickSort(arr){
     if(arr.length < 1){
         return arr
@@ -15,7 +15,7 @@ function quickSort(arr){
         }
     }
     //递归
-    return quickSort(left).concat([flag]).concat(quickSort(right))
-    return [...left,flag,...right]
+    // return quickSort(left).concat([flag]).concat(quickSort(right))
+    return [...quickSort(left),flag,...quickSort(right)]
 }
 console.log(quickSort(arr));
