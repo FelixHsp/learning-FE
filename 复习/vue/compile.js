@@ -41,7 +41,20 @@ class Compile{
     }
     compileText(node){
         console.log(RegExp.$1);
-        node.textContent = this.$vm.$data[RegExp.$1];//只能初始化一次
+        // node.textContent = this.$vm.$data[RegExp.$1];//只能初始化一次
+        this.update(node, this.$vm, RegExp.$1, 'text');
+    }
+    //更新函数
+    update(node, vm, exp, dir){
+        const updaterFn = this[dir+'Updater'];
+        updaterFn && updaterFn(node, vm[exp]);
+        //依赖收集
+        new Watcher(vm, exp, function(value){
+            updaterFn && updaterFn(node, value);
+        })
+    }
+    textUpdater(node, value){
+        node.textContent = value
     }
     isElement(node){
         return node.nodeType === 1;
