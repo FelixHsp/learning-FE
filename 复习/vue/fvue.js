@@ -6,10 +6,14 @@ class FVue {
         this.observe(this.$data);
 
         //模拟watcher创建
-        new Watcher();
-        this.$data.test;
-        new Watcher();
-        this.$data.foo.bar;
+        // new Watcher();
+        // this.$data.test;
+        // new Watcher();
+        // this.$data.foo.bar;
+        new Compile(options.el, this);
+        if(options.created){
+            options.created.call(this)
+        }
     }
     observe(value) {
         if(!value || typeof value !== 'object'){
