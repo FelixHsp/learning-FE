@@ -35,7 +35,7 @@ class Compile{
                     const attrName = attr.name;//属性名
                     const exp = attr.value;//属性值
                     if(this.isDirective(attrName)){
-                        // f-text
+                        // f-text f-model
                         const dir = attrName.substring(2);
                         this[dir] && this[dir](node, this.$vm, exp);
                     }
@@ -71,6 +71,25 @@ class Compile{
     text(node, vm, exp){
         this.update(node, vm, exp, 'text');
     }
+
+    model(node, vm, exp) {
+        // 指定input的value属性
+        this.update(node, vm, exp, 'model');
+        //视图对模型的响应
+        node.addEventListener('input', (e)=>{
+            vm[exp] = e.target.value;
+    })}
+    modelUpdater(node, value) {
+        node.value = value
+    }
+
+    html(node, vm, exp) {
+        this.update(node, vm, exp, 'html')
+    }
+    htmlUpdater(node, value) {
+        node.innerHTML = value
+    }
+
     textUpdater(node, value){
         node.textContent = value
     }
