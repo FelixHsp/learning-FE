@@ -9,12 +9,45 @@
 <body>
     
     <script>
-        let str = "hello world!";
-        // console.log(str.indexOf("hello")); //0
-        // console.log(str.includes("hello")); //true
-        let reg = /hello/;
-        // console.log(reg.test(str)); //true
+        // let str = "hello world!";
+        // // console.log(str.indexOf("hello")); //0
+        // // console.log(str.includes("hello")); //true
+        // let reg = /hello/;
+        // // console.log(reg.test(str)); //true
+        // // console.log(reg.exec(str)); //index:0
+        // let reg2 = new RegExp("hello");
+        // // console.log(reg2.test(str));//true
+        // // console.log(reg2.exec(str)); //index:0
+
+        // let reg = /c{1,2}/; //1个c或者2个c {1,}1个或者更多
+        // let str = "ccainiao";
+        // console.log(reg.exec(str));
+        // c* == c{0,} c+ == c{1,} c? == c{0,1}
+
+        // let reg = /c{1,}?/;
+        // str = 'ccccc';
+        // console.log(reg.exec(str)); // c 非贪心模式
+
+        // ^以什么开头
+        // let reg = /^c/;
+        // let str = "维生素c";//null
+        // let str2 = "cba"; //c
+        // console.log(reg.exec(str2));
+
+        // $以什么结尾
+        // let reg = /c$/;
+        // let str = "维生素c";//c
+        // let str2 = "cba"; //null
+        // console.log(reg.exec(str2));
+
+        //^ $ 匹配本身
+        let reg = /^c$/;
+        let str = "维生素c";//null
+        let str2 = "c"; //c
+        console.log(reg.exec(str2));
+
         
+
     </script>
 </body>
 </html>
