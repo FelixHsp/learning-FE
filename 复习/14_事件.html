@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #div1{
+        width: 300px;
+        height: 300px;
+        background-color: red;
+    }
+    #div2{
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+    }
+</style>
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+    <script>
+        var oDiv1 = document.getElementById('div1');
+        var oDiv2 = document.getElementById('div2');
+
+        //false 冒泡
+        oDiv1.addEventListener('click',function(){
+            console.log('div1 click')
+        },false);
+        oDiv2.addEventListener('click',function(){
+            console.log('div2 click')
+        },false);
+
+        //true 捕获
+        oDiv1.addEventListener('click',function(){
+            console.log('div1 click')
+        },true);
+        oDiv2.addEventListener('click',function(){
+            console.log('div2 click')
+        },true);
+
+    </script>
+</body>
+</html>
