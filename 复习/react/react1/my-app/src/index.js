@@ -2,7 +2,6 @@
 // import ReactDom from 'react-dom';
 import React, { Component } from './freact';
 import ReactDom from './freact-dom';
-import { link } from 'fs';
 
 function Comp(props) {
     return <h2>Felix {props.name}</h2>
