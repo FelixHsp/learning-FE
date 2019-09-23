@@ -5,13 +5,13 @@ import ReactDom from './freact-dom';
 import { link } from 'fs';
 
 function Comp(props) {
-    return <h2>hi {props.name}</h2>
+    return <h2>Felix {props.name}</h2>
 }
 class Comp2 extends Component {
     render() {
         return (
             <div>
-                <h2>hi {this.props.name}</h2>
+                <h2>Felix {this.props.name}</h2>
             </div>
         )
     }
@@ -21,13 +21,19 @@ const users = [
     { name: 'ls', age: 20 }
 ]
 const jsx = (
-    <div id="demo" onClick={() => { alert('1') }} style={{ color: "red", border: "1px solid black" }}>
-        <span>hi</span>
+    <div id="demo" onClick={() => { alert('click事件') }} style={{
+        width: "400px",
+        height: "300px",
+        color: "red",
+        border: "1px solid black",
+        margin: "0 auto"
+    }}>
+        <span>Felix</span>
         <Comp name="函数组件" />
         <Comp2 name="类组件" />
         <ul>
             {users.map(user =>
-                <li key={user.name}>{user.name}</li>
+                <li key={user.name}>name:{user.name} age:{user.age}</li>
             )}
         </ul>
     </div>
