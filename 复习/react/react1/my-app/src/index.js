@@ -7,7 +7,7 @@ function Comp(props) {
     return <h2>hi {props.name}</h2>
 }
 class Comp2 extends Component {
-    render(props) {
+    render() {
         return (
             <div>
                 <h2>hi {this.props.name}</h2>
