@@ -18,7 +18,7 @@
             {{doubleAge}}
         </p>
         <!-- 双向绑定 -->
-        <input type="text" f-model="name"> <button @click="changeName">呵呵</button>
+        <input type="text" f-model="name"> <button @click="changeName">button</button>
         <div f-html="html"></div>
     </div>
     <script src='./compile.js'></script>
@@ -29,7 +29,7 @@
             data: {
                 name: "I am test.",
                 age: 12, 
-                html: '<button>这是一个按钮</button>'
+                html: '<button>button2</button>'
             },
             created() {
                 console.log('开始啦')

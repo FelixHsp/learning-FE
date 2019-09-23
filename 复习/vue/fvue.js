@@ -4,7 +4,6 @@ class FVue {
         this.$options = options;
         this.$data = options.data;
         this.observe(this.$data);
-
         //模拟watcher创建
         // new Watcher();
         // this.$data.test;
