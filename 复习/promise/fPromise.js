@@ -1,4 +1,4 @@
-class kPromise {
+class fPromise {
     static PENDING = 'PENDING';
     static RESOLVED = 'RESOLVED';
     static REJECTED = 'REJECTED';
@@ -6,15 +6,15 @@ class kPromise {
         if( typeof handler !== 'function' ) throw new TypeError('Promise resolver undefined is not a function');
         this.resolvedList = [];
         this.rejectedList = [];
-        this.status = kPromise.PENDING;
+        this.status = fPromise.PENDING;
         this.value;
         handler ( this._resolve.bind(this) , this._reject.bind(this) );//如果传的是函数，就执行。
     }
     _resolve(val) {
         // console.log('resolve')
         window.addEventListener( 'message' , () => {
-            if(this.status !== kPromise.PENDING ) return;//防止状态二次改变
-            this.status = kPromise.RESOLVED; //正常resolve直接调用，this指向window，需在handler里bind一下
+            if(this.status !== fPromise.PENDING ) return;//防止状态二次改变
+            this.status = fPromise.RESOLVED; //正常resolve直接调用，this指向window，需在handler里bind一下
             this.value = val;
             let handler;
             while ( handler = this.resolvedList.shift() ) {
@@ -25,8 +25,8 @@ class kPromise {
     }
     _reject() {
         window.addEventListener( 'message' , () => {
-            if(this.status !== kPromise.PENDING ) return;
-            this.status = kPromise.REJECTED;
+            if(this.status !== fPromise.PENDING ) return;
+            this.status = fPromise.REJECTED;
             this.value = val;
             let handler;
             while ( handler = this.rejectedList.shift() ) {
@@ -37,11 +37,11 @@ class kPromise {
     }
     then( resolvedHandler , rejectedHandeler ){
         // resolvedHandler();
-        return new kPromise ( (resolve , rejecte) => {
+        return new fPromise ( (resolve , rejecte) => {
             function newResolveHandler(val) {
                 if( typeof resolvedHandler === 'function'){
                     let result = resolvedHandler(val)
-                    if(result instanceof kPromise){
+                    if(result instanceof fPromise){
                         result.then(resolve , rejecte)
                     }else{
                         resolve(result);
@@ -53,7 +53,7 @@ class kPromise {
             function newRejectHandler(val) {
                 if(typeof rejectedHandeler === 'function'){
                     let result = rejectedHandeler(val)
-                    if(result instanceof kPromise){
+                    if(result instanceof fPromise){
                         result.then(resolve , rejecte)
                     }else{
                         rejecte(result);

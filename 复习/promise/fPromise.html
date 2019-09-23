@@ -8,11 +8,11 @@
 </head>
 <body>
     
-    <script src="./kPromise.js"></script>
+    <script src="./fPromise.js"></script>
     <script>
-        let p1 = new kPromise( ( resolve, reject ) => {
+        let p1 = new fPromise( ( resolve, reject ) => {
             setTimeout( () => {
-                console.log('kPromise')
+                console.log('fPromise')
                 resolve('Felix');
                 // reject();
             },1000)
@@ -30,9 +30,9 @@
         let p2 = p1.then( val => {
             console.log('test' , val)
             // return 123;
-            return new kPromise( (resolve,reject) =>{
+            return new fPromise( (resolve,reject) =>{
                 setTimeout(() => {
-                    console.log('kPromise2')
+                    console.log('fPromise2')
                     resolve('Felix2')
                 }, 1000);
             } )
@@ -46,7 +46,7 @@
         /* setTimeout(()=>{
             console.log('setTimeout'); // first
         },0)
-        new kPromise ( (resolve) => {
+        new fPromise ( (resolve) => {
             resolve();   
         }).then( () => {
             console.log('then') // second
