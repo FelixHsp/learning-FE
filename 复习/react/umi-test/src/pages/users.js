@@ -4,7 +4,7 @@ import styles from './users.css';
 export default function() {
   return (
     <div className={styles.normal}>
-      <h1>Page users</h1>
+      <h1>Test2</h1>
     </div>
   );
 }
