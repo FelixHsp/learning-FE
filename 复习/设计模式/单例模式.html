@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .modal{
+            display: none;
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击弹窗</button>
+    <script>
+        let instance;
+        function creatSingleLayer(fn){
+            return function(){
+                return instance || (instance = fn.apply(this,arguments))
+            }
+        }
+        var index = 10;
+        function createModal(){
+            let div = document.createElement('div');
+            div.innerHTML = 1;
+            div.className = 'modal';
+            div.style.display = 'none';
+            div.style.marginLeft = ( ++index ) + 'px';
+            div.style.marginTop = ( ++index )  + 'px';
+            return document.body.appendChild(div);
+        };
+        var bTn = document.getElementById('btn');
+        btn.addEventListener('click',()=>{
+            let modal = creatSingleLayer(createModal)();
+            // var modal = createModal();
+            modal.innerHTML -= 1;
+            modal.style.display = 'block';  
+        })
+
+    </script>
+</body>
+</html>
