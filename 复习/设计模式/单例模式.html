@@ -21,8 +21,8 @@
 <body>
     <button id="btn">点击弹窗</button>
     <script>
-        let instance;
         function creatSingleLayer(fn){
+            let instance=null;
             return function(){
                 return instance || (instance = fn.apply(this,arguments))
             }
@@ -38,9 +38,10 @@
             return document.body.appendChild(div);
         };
         var bTn = document.getElementById('btn');
+        let creat = creatSingleLayer(createModal);
         btn.addEventListener('click',()=>{
-            // let modal = creatSingleLayer(createModal)();
-            let modal = createModal();
+            let modal = creat();
+            // let modal = createModal();
             modal.style.display = 'block';  
         })
 
