@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" id="model"><br />
+        <div id="modelText"></div>
+    </div>
+    <script>
+        var model = document.querySelector("#model");
+        var modelText = document.querySelector("#modelText");
+        var defaultName = "defaultName";
+        var userInfo = {}
+        model.value = defaultName;
+        Object.defineProperty(userInfo, "name", {
+            get: function () {
+                return defaultName;
+            },
+            set: function (value) {
+                defaultName = value;
+                model.value = value;
+                console.log(value);
+                modelText.textContent = value;
+            }
+        })
+
+        userInfo.name = "new value";
+        var isEnd = true;
+
+        model.addEventListener("input", function () {
+            if (isEnd) {
+                userInfo.name = this.value;
+            }
+        }, false)
+    </script>
+</body>
+
+</html>

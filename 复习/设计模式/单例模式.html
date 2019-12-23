@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        .modal{
+        .modal {
             display: none;
             width: 500px;
             height: 500px;
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
             border: 1px solid;
         }
     </style>
 </head>
+
 <body>
     <button id="btn">点击弹窗</button>
     <script>
-        function creatSingleLayer(fn){
-            let instance=null;
-            return function(){
-                return instance || (instance = fn.apply(this,arguments))
+        function creatSingleLayer(fn) {
+            let instance = null;
+            return function () {
+                return instance || (instance = fn.apply(this, arguments))
             }
         }
         var index = 10;
-        function createModal(){
+        function createModal() {
             let div = document.createElement('div');
             div.innerHTML = 1;
             div.className = 'modal';
             div.style.display = 'none';
-            div.style.marginLeft = ( ++index ) + 'px';
-            div.style.marginTop = ( ++index )  + 'px';
+            div.style.marginLeft = (++index) + 'px';
+            div.style.marginTop = (++index) + 'px';
             return document.body.appendChild(div);
         };
         var bTn = document.getElementById('btn');
         let creat = creatSingleLayer(createModal);
-        btn.addEventListener('click',()=>{
+        btn.addEventListener('click', () => {
             let modal = creat();
             // let modal = createModal();
-            modal.style.display = 'block';  
+            modal.style.display = 'block';
         })
 
     </script>
 </body>
+
 </html>
